@@ -1,0 +1,270 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+        .nav-item  {
+            color: var(--e-global-color-primary);
+            fill: var(--e-global-color-primary);
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
+        .nav-item a{
+            color:#05466b;
+        }
+        nav{
+            position: fixed;
+            width: 100%;
+            height: 88px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            top: 0px;
+        }
+        .nav-item:hover{
+            background-color: var(--e-global-color-primary);
+        }
+        .dropdown-menu{
+            display: none;
+        }
+        .nav-item:hover .dropdown-menu{
+            display: block;
+        }
+        .primary{
+            /* background-color: var(--e-global-color-primary); */
+            color: #05466b;
+        }
+        .bg-primary {
+            background-color: #05466b !important;
+        }
+        .secondary{
+            /* background-color: var(--e-global-color-secondary); */
+            color: #5ce1e6;
+        }
+        .up{
+            margin-top: 85px;
+        }
+        .hero-section {
+            position: relative;
+            height: 250px;
+            background: url('assets/img/stock-photo-quality-assurance-concept-ensuring-the-products-or-services-meet-the-required-standards-and-2476030261.jpg') center center / cover no-repeat fixed;
+        }
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            background-image: linear-gradient(136deg, rgb(5, 70, 107,0.8) 41%, rgb(255, 122, 89,0.6) 100%);
+            opacity: 1;
+            transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+        }
+        .hero-content {
+        position: relative;
+        /* z-index: 2; */
+    }
+    .help-section h2 {
+        margin: 20px 0;
+        padding: 10px 0;
+    }
+    .help-section .row {
+    position: relative;
+    z-index: 2; /* Make sure the content is above the overlay */
+}
+
+    .help-card {
+        height: 100%;
+        /* min-height: 280px; */
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        color: white;
+        border: none;
+        overflow: hidden;
+        overflow: hidden; /* Prevents image overflow */
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease-in-out;
+    }
+
+.help-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: background 0.5s ease-in-out;
+}
+.bg-o1::before{
+    background: rgba(156, 25, 243, 0.5); /* Overlay with transparency */
+}
+.bg-o2::before{
+    background: rgba(214, 50, 9, 0.493); /* Overlay with transparency */
+}
+.bg-o3::before{
+    background: rgba(71, 219, 170, 0.5); /* Overlay with transparency */
+}
+.bg-o4::before{
+    background: rgba(6, 149, 245, 0.5); /* Overlay with transparency */
+}
+.bg-o5::before{
+    background: rgba(172, 236, 53, 0.5); /* Overlay with transparency */
+}
+.bg-o6::before{
+    background: rgba(141, 132, 136, 0.5); /* Overlay with transparency */
+}
+.help-card:hover {
+    transform: scale(1.05); /* Zoom effect on hover */
+}
+.card-text{
+    column-gap: 0px;
+    color: var( --e-global-color-primary );
+    font-family: "Source Sans Pro", Sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+    .help-card .card-body {
+        height: 100%;
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    @media (max-width: 768px) {
+        .nav-item {
+            background-color: white;
+            color: #05466b;
+            fill: var(--e-global-color-primary);
+            padding:5%;
+        }
+        .help-card .card-body {
+    height: 280px;
+    padding: 30px 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+    }
+    .tt{
+        font-family: "DIN PRO BLACK", Sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var( --e-global-color-431ca40 );
+    }
+.help-section {
+    background: transparent;
+}
+.help-card .btn {
+    border-radius: 0; /* Makes the button square */
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+}
+
+.help-card .btn:hover {
+    background: white;
+    color: #05466b;
+}
+
+/* Different color for even-numbered cards */
+.help-card:nth-child(even)::before {
+    background: rgba(255, 122, 89, 0.6); /* Different overlay color for even cards */
+}
+/* Adjust for even-numbered cards on hover */
+.help-card:nth-child(even):hover::before {
+    background: rgba(255, 122, 89, 0.3); /* More transparent for even cards */
+}
+section div div div h2.secondary{
+    font-size: 48px;
+    font-weight: 900;
+}
+h1{
+    font-weight: 900;
+}
+a.secondary:hover{
+    color: #ff7a59;
+    cursor: pointer;
+}
+a.primary:hover{
+    color: #05466b;
+    /* text-shadow: #5ce1e6 1px 1px 1px; */
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.btn-secondary:hover{
+    background-color: #ffffff;
+    color: #5ce1e6;
+    border: #5ce1e6 1px solid;
+}
+
+  
+            @keyframes fadein {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            .button{
+                background-color: #ff7a59;
+                padding: 15px 20px 15px 20px;
+                /* font-size: 22px; */
+                font-family: Source Sans Pro, Sans-serif;
+                fill: var( --e-global-color-431ca40 );
+                border-radius: 3px;
+                box-sizing: border-box;
+                line-height: 1;
+                transition: all .3s;
+                text-align: center;
+            }
+            .button:hover{
+                background-color: #fff;
+                color:#ff7a59
+            }
+            .rounded-button{
+                border-radius: 50px;
+                border: #ff7a59 1px solid;
+                color: #fff;
+            }
+            .rounded-button:hover{
+                border: #ff7a59 1px solid;
+            }
+            .pads .row{
+                max-width: 1140px;   
+                width: 100%;
+                         
+            }
+          
+            .navbar-nav li:hover{
+                background-color: #05466b;
+            }
+            .navbar-nav li:hover > a{
+                background-color: #05466b;
+                color: #fff;
+            }
+            .active{
+                background-color: #05466b;
+                color: #fff;
+            }
+
+    .dropdown-menu {
+        border-radius: 0; /* Makes the dropdown menu square */
+        top: 100%; /* Ensures dropdown starts directly under the nav bar */
+        left: 0;
+        /* right: 0; */ 
+    }
+    .nav-item.dropdown:hover .nav-link:hover > a{
+        background-color: black; /* Hover background color */
+        color: white; /* Hover text color */
+    }
