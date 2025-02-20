@@ -1,3 +1,10 @@
+<?include 'config/database.php';
+
+// Fetch the latest 3 blog posts based on creation time (descending order)
+$query = "SELECT * FROM blog_posts ORDER BY created_at DESC LIMIT 3";
+$result = mysqli_query($conn, $query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,6 +36,7 @@
 <body  style="background: white;">
 <?php include 'include/navbar.php'; ?>
 
+
     <section class="hero-section up">
         <div class="container h-100">
             <div class="row h-100 justify-content-center align-items-center">
@@ -48,39 +56,19 @@
                     <h2 class="fw-bold secondary">RECENT BLOG POSTS</h2>
                 </div>
             </div>
+    <!-- TO DO--><!-- This will include the blog_files/blocard_template.php to display the contain using the template from the said file -->
+     <!-- Check this and correct by editing code from blog_card_template.php file -->
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mx-auto" style="max-width: 900px;">
-                <div class="col mb-4" id="senge">
-                    <div class="card border-0 shadow-sm bg-white hover-card">
-                        <img src="assets/img/stock-photo-compliance-in-business-concept-stay-in-line-with-business-policies-businessman-touching-2450677463.jpg" class="card-img-top" alt="POST" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center text-dark">
-                            <a href="blog-detail.html" class="card-title fw-bold primary py-4">Identifying and Mitigating Common Bottlenecks in Pharmaceutical Documentation</a>
-                            <hr>
-                            <p class="text-muted" style="font-size: 12px;">January 15, 2025, at 10:00 AM</p>
-                        </div>
+            // Check if there are blog posts
+                <?php if (mysqli_num_rows($result) > 0): ?>
+                    <div class="blog-container">
+                        <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                            <?php include 'blog_files/blocard_template.php'; ?>
+                        <?php endwhile; ?>
                     </div>
-                </div>
-    
-                <div class="col mb-4" id="franklin">
-                    <div class="card border-0 shadow-sm bg-white hover-card">
-                        <img src="assets/img/stock-photo-a-medical-worker-holding-of-health-care-icons-medical-technology-background-health-insurance-2496052697.jpg" class="card-img-top" alt="POST" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center text-dark">
-                            <a href="blog-detail.html" class="card-title fw-bold primary py-4">The Importance of Quality Management in Medical Device Development</a>
-                            <hr>
-                            <p class="text-muted" style="font-size: 12px;">January 10, 2025, at 2:30 PM</p>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="col mb-4" id="another-post">
-                    <div class="card border-0 shadow-sm bg-white hover-card">
-                        <img src="assets/img/stock-photo-concept-of-online-education-man-use-online-education-training-and-e-learning-webinar-on-internet-2190845893.jpg" class="card-img-top" alt="POST" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center text-dark">
-                            <a href="blog-detail.html" class="card-title fw-bold primary py-4">Navigating Regulatory Challenges in the Medical Field</a>
-                            <hr>
-                            <p class="text-muted" style="font-size: 12px;">January 5, 2025, at 1:15 PM</p>
-                        </div>
-                    </div>
-                </div>
+                <?php else: ?>
+                    <p>No blog posts available.</p>
+                <?php endif; ?>  
                 
             </div>
     
