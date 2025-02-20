@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f9f9f9; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+        h1 { color: #333; }
+        img { max-width: 100%; border-radius: 10px; }
+        .subtitle { font-size: 1.2em; font-weight: bold; margin-top: 20px; }
+        .reference { margin-top: 20px; font-style: italic; }
+        .created-on { color: gray; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container" data-aos="fade-up">
+        <h1 id="title">Blog Title</h1>
+        <p class="created-on">Created on: <span id="created-on">YYYY-MM-DD</span></p>
+        <img id="blog-img" src="" alt="Blog Image">
+        <p id="description">Blog description goes here...</p>
+        
+        <h2 class="subtitle" id="subtitle-1">Subtitle 1</h2>
+        <p id="text-1">Text for subtitle 1...</p>
+        
+        <h2 class="subtitle" id="subtitle-2">Subtitle 2</h2>
+        <p id="text-2">Text for subtitle 2...</p>
+        
+        <p class="reference">Reference: <span id="reference">Reference link or text...</span></p>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+        // Example content injection (Replace with dynamic data as needed)
+        document.getElementById("title").textContent = "Amazing Blog Post";
+        document.getElementById("created-on").textContent = "2025-02-20";
+        document.getElementById("blog-img").src = "https://via.placeholder.com/800x400";
+        document.getElementById("description").textContent = "This is a brief description of the blog post.";
+        document.getElementById("subtitle-1").textContent = "Understanding the Topic";
+        document.getElementById("text-1").textContent = "This section explains the basics of the topic in detail.";
+        document.getElementById("subtitle-2").textContent = "Deeper Insights";
+        document.getElementById("text-2").textContent = "This section delves into more advanced aspects.";
+        document.getElementById("reference").textContent = "www.example.com/reference";
+    </script>
+</body>
+</html>
