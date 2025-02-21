@@ -1,3 +1,35 @@
+<?php
+// Import database connection
+include $_SERVER['DOCUMENT_ROOT'].'config/db.php';
+
+// Ensuring if $pdo is correctly initialized
+if (!isset($pdo)) {
+    die("Database connection error.");
+}
+
+// Check if 'id' exists in URL and is a valid integer
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+    die("Invalid blog ID.");
+}
+
+$id = (int) $_GET['id']; // Cast to interger to avoid SQL injection
+
+// Fetch blog data based on ID, fix this code
+$query = "SELECT id, img_url, title,slug, subtitle1, subtitle2,text1,text2,reference,description, updated FROM blog WHERE id= :id";
+$stmt = $pdo->prepare($query);
+$stmt->execute();
+$blog = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Fetching orther blog contents
+// Fetch blog data
+$queryblogs = "SELECT id, img_url, title, created FROM blog ORDER BY created DESC LIMIT 3";
+$stmt = $pdo->prepare($queryblogs);
+$stmt->execute();
+$blogs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?> 
+?> 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,40 +107,28 @@
                     </nav>
     
                     <!-- Blog Title -->
-                    <h1 class="fw-bold primary">The Impact of MDCG 2024-10 on Internal Processes, Timelines, and Team Readiness</h1>
+                    <h1 class="fw-bold primary"><?php echo htmlspecialchars($blog['title']) ?></h1>
     
                     <!-- Blog Image -->
-                    <img src="iStock-1631439217-1536x1024.jpg" class="img-fluid my-4" alt="Blog Post Image">
+                    <img src="<?= htmlspecialchars($blog['img_url']) ?>" class="img-fluid my-4" alt="Blog Post Image">
     
                     <!-- Blog Content -->
-                    <p>The introduction of the MDCG 2024-10 guideline in June 2024 marks a significant shift in how orphan medical devices are evaluated and brought to market in the European Union. This new guidance aims to balance the stringent requirements of the Medical Device Regulation (MDR) with the unique challenges faced by manufacturers of orphan devices, particularly regarding clinical evidence. The implications of this update are profound, affecting internal processes, timelines, and the overall readiness of teams involved in bringing these critical devices to market.</p>
+                    <p><?= htmlspecialchars($blog['description'])?></p>
+                    <h3 class="fw-bold italic"><?= htmlspecialchars($blog['subtitl1'])?></h3>
+                    <p><?= htmlspecialchars($blog['text1'])?></p>
+                    <h3 class="fw-bold italic"><?= htmlspecialchars($blog['subtitle2'])?></h3>
+                    <p><?= htmlspecialchars($blog['text2'])?></p>
                     
-                    <h3 class="fw-bold italic">Impact on Internal Processes</h3>
-                    <p>The MDCG 2024-10 guidance emphasizes a more flexible approach to the clinical evaluation of orphan devices, particularly in instances where generating sufficient pre-market clinical data is challenging. This shift allows manufacturers to rely more heavily on non-clinical data and post-market clinical follow-up (PMCF) studies to meet regulatory requirements. For teams, this means a significant reorientation of internal processes...</p>
-    
-                    <h3 class="fw-bold italic">Timelines and Readiness</h3>
-                    <p>The MDCG 2024-10 guideline introduces a more balanced and proportionate application of MDR requirements for orphan devices, which could potentially expedite the approval process. However, this flexibility comes with the responsibility of ensuring that any limitations in pre-market clinical data are addressed through PMCF activities as soon as possible...</p>
-    
-                    <h3 class="fw-bold italic">Preparing Your Team</h3>
-                    <p>To effectively navigate the new regulatory landscape introduced by MDCG 2024-10, teams must focus on enhancing their readiness across several key areas...</p>
-    
-                    <h3 class="fw-bold italic">Conclusion</h3>
-                    <p>The MDCG 2024-10 guideline represents a significant evolution in the regulation of orphan medical devices within the EU, offering both challenges and opportunities...</p>
-    
-                    <h3 class="fw-bold italic">Works Cited</h3>
-                    <ul>
-                        <li>Al-Faruque, Ferdous. “MDCG Guidance Tries to Reduce Burden of Bringing Orphan Devices to EU Market.” Regulatory Affairs Professionals Society, 25 June 2024.</li>
-                        <li>Medical Device Coordination Group. “MDCG 2024-10 Guidelines on Clinical Evaluation of Orphan Medical Devices.” Official Journal of the European Union, June 2024.</li>
-                        <li>Brown, Michael. “Enhancements in Clinical Evaluation of Orphan Medical Devices.” Regulatory Affairs Journal, vol. 14, no. 1, 2024, pp. 88-105.</li>
-                        <li>Smith, John. “Regulatory Updates in Orphan Medical Devices.” Journal of Medical Device Regulations, vol. 15, no. 2, 2024, pp. 112-130.</li>
-                    </ul>
+                    <h3 class="fw-bold italic">Reference</h3>
+                    <p><?= htmlspecialchars($blog['reference']) ?></p>
+                    <p><?= htmlspecialchars($blog['updated'])?></p>
                 </div>
                 
             <!-- Sidebar Column with Left Border -->
             <div class="col-lg-3 mb-4 border-start" style="margin-left: 30px; padding-left: 15px;">
                 <!-- Sidebar Column -->
                 <h3 class="fw-bold">About the Blog</h3>
-                <p>In this blog, we share our insights and experiences to help companies build quality, scalability, and flexibility into their regulatory writing...</p>
+                <p><?= htmlspecialchars($blog['description'])?></p>
 <hr class="my-4">
                 <h3 class="fw-bold">Get in Touch</h3>
                 <p>Email: <a href="mailto:info@criterionedge.com" class="secondary">info@criterionedge.com</a></p>
@@ -117,30 +137,15 @@
                 
                 <h3 class="fw-bold">Recent Posts</h3>
                 <ul class="list-unstyled">
-                    <li>
-                        <a href="#" class="fw-bold primary" style="font-size: 18px;">Identifying and Mitigating Common Bottlenecks in Pharmaceutical Documentation</a>
-                        <button class="btn btn-link secondary">Read More »</button>
-                    </li>
-                    <hr class="my-4">
-                    <li>
-                        <a href="#" class="fw-bold primary" style="font-size: 18px;">The Impact of MDCG 2024-10 on Internal Processes, Timelines, and Team Readiness</a>
-                        <button class="btn btn-link secondary">Read More</button>
-                    </li>
-                    <hr class="my-4">
-                    <li>
-                        <a href="#" class="fw-bold primary" style="font-size: 18px;">The Strategic Advantage of Outsourcing Scientific Writing in Pharmaceutical Regulatory Affairs</a>
-                        <button class="btn btn-link secondary">Read More</button>
-                    </li>
-                    <hr class="my-4">
-                    <li>
-                        <a href="#" class="fw-bold primary" style="font-size: 18px;">The Impact of the IVDR on IVD Clinical Performance Studies</a>
-                        <button class="btn btn-link secondary">Read More</button>
-                    </li>
-                    <hr class="my-4">
-                    <li>
-                        <a href="#" class="fw-bold primary" style="font-size: 18px;">How to Evaluate a Writing Team for Pharmaceutical Regulatory Affairs</a>
-                        <button class="btn btn-link secondary">Read More</button>
-                    </li>
+                    <?php foreach ($blogs as $blogL): ?> 
+                        <li>
+                            <a class="fw-bold primary" style="font-size: 18px;">
+                                <?= htmlspecialchars($blogL['title']) ?>
+                            </a>
+                            <button href="blog-detail_template.php?id=<?= $blogL['id'] ?>" class="btn btn-link secondary">Read More »</button>
+                        </li>
+                        <hr class="my-4">
+                    <?php endforeach; ?>
                 </ul>
             </div>
         </div>
@@ -155,41 +160,19 @@
                 </div>
             </div>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mx-auto" style="max-width: 900px;">
-                <div class="col mb-4" id="senge">
-                    <div class="card border-0 shadow-sm bg-white hover-card">
-                        <img src="assets/img/team/senge.jpg" class="card-img-top" alt="POST" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center text-dark">
-                            <a href="#" class="card-title fw-bold primary py-4">Identifying and Mitigating Common Bottlenecks in Pharmaceutical Documentation</a>
-                            <hr>
-                            <p class="text-muted" style="font-size: 12px;">January 15, 2025, at 10:00 AM</p>
+                <?php if (count($blogs) > 0): ?>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                        <div class="card border-0 shadow-sm bg-white hover-card">
+                            <?php foreach ($blogs as $blogItem): ?>
+                                <!-- Include blog card template -->
+                                <?php include 'blog_card_template.php'; ?>
+                            <?php endforeach; ?>
                         </div>
                     </div>
-                </div>
-    
-                <div class="col mb-4" id="franklin">
-                    <div class="card border-0 shadow-sm bg-white hover-card">
-                        <img src="assets/img/team/franklin.jpg" class="card-img-top" alt="POST" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center text-dark">
-                            <a href="#" class="card-title fw-bold primary py-4">The Importance of Quality Management in Medical Device Development</a>
-                            <hr>
-                            <p class="text-muted" style="font-size: 12px;">January 10, 2025, at 2:30 PM</p>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="col mb-4" id="another-post">
-                    <div class="card border-0 shadow-sm bg-white hover-card">
-                        <img src="assets/img/team/another.jpg" class="card-img-top" alt="POST" style="height: 250px; object-fit: cover;">
-                        <div class="card-body text-center text-dark">
-                            <a href="#" class="card-title fw-bold primary py-4">Navigating Regulatory Challenges in the Medical Field</a>
-                            <hr>
-                            <p class="text-muted" style="font-size: 12px;">January 5, 2025, at 1:15 PM</p>
-                        </div>
-                    </div>
-                </div>
-                
+                <?php else: ?>
+                    <p>No blog posts available.</p>
+                <?php endif; ?>
             </div>
-    
             
         </div>
     </section>

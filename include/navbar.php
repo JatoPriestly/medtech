@@ -5,7 +5,7 @@ $current_page = basename($_SERVER['REQUEST_URI'], ".php");
 
 <nav class="navbar navbar-expand-md fixed-top py-3" style="color: #05466b; background: white;">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="">
+        <a class="navbar-brand d-flex align-items-center" href="index.php">
             <img src="assets/img/Medtech_size.png" width="200" alt="MedTech Assist Logo">
         </a>
         <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5">

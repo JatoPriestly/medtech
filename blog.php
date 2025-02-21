@@ -8,7 +8,7 @@ if (!isset($pdo)) {
 }
 
 // Fetch blog data
-$query = "SELECT id, img_url, title, created FROM blogs ORDER BY created DESC LIMIT 3";
+$query = "SELECT id, img_url, title, created FROM blog ORDER BY created DESC LIMIT 3";
 $stmt = $pdo->prepare($query);
 $stmt->execute();
 $blogs = $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch 3 most recent blog posts
