@@ -312,7 +312,7 @@
   
 <section class="hero-section" style=" background: url('assets/img/Web-cover-v3.png') center center / cover no-repeat fixed ;height: 100%;">
     <div class="container py-5">
-    <h3 class="text-center secondary fw-bold" style="color:#fff;">We provide tailored solutions to help medical device companies navigate quality management and regulatory requirements efficiently.</h3>
+    <h3 class="text-center secondary fw-bold" style="color: #fff;" >We provide tailored solutions to help medical device companies navigate quality management and regulatory requirements efficiently.</h3>
 
         <div class="mx-auto" style="max-width: 1140px;">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -321,7 +321,7 @@
                     <div class="card help-card bg-o1" style="background-image: url('assets/img/stock-photo-hand-arranging-wood-block-with-healthcare-medical-icon-health-insurance-concept-1548988871.jpg');">
                         <div class="card-body">
                             <h5 class="fw-bold card-title">Consulting</h5>
-                            <button class="btn btn-primary btn-sm" type="button">Learn more</button>
+                            <a href="consultant.php"><button class="btn btn-primary btn-sm" type="button">Learn more</button></a>
                         </div>
                     </div>
                 </div>
@@ -329,7 +329,7 @@
                     <div class="card help-card bg-o2" style="background-image: url('assets/img/stock-photo-compliance-in-business-concept-stay-in-line-with-business-policies-businessman-touching-2450677463.jpg');">
                         <div class="card-body">
                             <h5 class="fw-bold card-title">Regulatory Compliance Management</h5>
-                            <button class="btn btn-primary btn-sm" type="button">Learn more</button>
+                            <a href="service-regulatory-compliance-management.php"><button class="btn btn-primary btn-sm" type="button">Learn more</button></a>
                         </div>
                     </div>
                 </div>
@@ -337,7 +337,7 @@
                     <div class="card help-card bg-o3" style="background-image: url('assets/img/stock-photo-qms-quality-management-system-concept-formalized-system-for-achieving-quality-policies-and-2141328099.jpg');">
                         <div class="card-body">
                             <h5 class="fw-bold card-title">Quality Management Systems</h5>
-                            <button class="btn btn-primary btn-sm" type="button">Learn more</button>
+                            <a href="service-quality-management-systems.php"><button class="btn btn-primary btn-sm" type="button">Learn more</button></a>
                         </div>
                     </div>
                 </div>
@@ -345,7 +345,7 @@
                     <div class="card help-card bg-o4" style="background-image: url('assets/img/stock-photo-quality-assurance-concept-ensuring-the-products-or-services-meet-the-required-standards-and-2476030261.jpg');">
                         <div class="card-body">
                             <h5 class="fw-bold card-title">Quality Assurance</h5>
-                            <button class="btn btn-primary primary btn-sm" type="button">Learn more</button>
+                            <a href="service-quality-assurance.php"><button class="btn btn-primary primary btn-sm" type="button">Learn more</button></a>
                         </div>
                     </div>
                 </div>
@@ -353,7 +353,7 @@
                     <div class="card help-card bg-o5" style="background-image: url('assets/img/stock-photo-serious-african-woman-supervisor-boss-teach-diverse-staff-workers-explain-project-plan-paperwork-at-1477336865.jpg');">
                         <div class="card-body">
                             <h5 class="fw-bold card-title">Training & Education</h5>
-                            <button class="btn btn-primary btn-sm" type="button">Learn more</button>
+                            <a href="service-training-education.php"><button class="btn btn-primary btn-sm" type="button">Learn more</button></a>
                         </div>
                     </div>
                 </div>
@@ -361,7 +361,7 @@
                     <div class="card help-card bg-o6" style="background-image: url('assets/img/stock-photo-work-safety-concept-wooden-cube-blocks-with-icon-of-safety-at-workplace-safety-first-protections-2320738081.jpg');">
                         <div class="card-body">
                             <h5 class="fw-bold card-title">Health & Safety</h5>
-                            <button class="btn btn-primary btn-sm" type="button">Learn more</button>
+                            <a href="service-health-safety.php"><button class="btn btn-primary btn-sm" type="button">Learn more</button></a>
                         </div>
                     </div>
                 </div>

@@ -1,8 +1,17 @@
-<?include 'config/database.php';
+<?php
+// Import database connection
+include $_SERVER['DOCUMENT_ROOT'].'config/db.php';
 
-// Fetch the latest 3 blog posts based on creation time (descending order)
-$query = "SELECT * FROM blog_posts ORDER BY created_at DESC LIMIT 3";
-$result = mysqli_query($conn, $query);
+// Ensuring if $pdo is correctly initialized
+if (!isset($pdo)) {
+    die(" Check Database connection error.");
+}
+
+// Fetch blog data
+$query = "SELECT id, img_url, title, created FROM blogs ORDER BY created DESC LIMIT 3";
+$stmt = $pdo->prepare($query);
+$stmt->execute();
+$blogs = $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch 3 most recent blog posts
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +38,13 @@ $result = mysqli_query($conn, $query);
             position: relative;
             height: 250px;
             background: url('assets/img/stock-photo-quality-assurance-concept-ensuring-the-products-or-services-meet-the-required-standards-and-2476030261.jpg') center center / cover no-repeat fixed;
+        }
+        .container {
+            max-width: 900px;
+        }
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
         }
 </style>
 </head>
@@ -58,20 +74,20 @@ $result = mysqli_query($conn, $query);
             </div>
     <!-- TO DO--><!-- This will include the blog_files/blocard_template.php to display the contain using the template from the said file -->
      <!-- Check this and correct by editing code from blog_card_template.php file -->
+        <div class="container mt-5">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mx-auto" style="max-width: 900px;">
-            // Check if there are blog posts
-                <?php if (mysqli_num_rows($result) > 0): ?>
-                    <div class="blog-container">
-                        <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                            <?php include 'blog_files/blocard_template.php'; ?>
-                        <?php endwhile; ?>
+                <!-- // Check if there are blog posts -->
+                <?php if (count($blogs) > 0): ?>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                        <?php foreach ($blogs as $blog): ?>
+                            <!-- Include blog card template -->
+                            <?php include 'blog_card_template.php'; ?>
+                        <?php endforeach; ?>
                     </div>
                 <?php else: ?>
                     <p>No blog posts available.</p>
-                <?php endif; ?>  
-                
+                <?php endif; ?>
             </div>
-    
             <!-- Navigation Links -->
             <div class="d-flex justify-content-between mt-4">
                 <a href="#" class="text-dark d-flex align-items-center">

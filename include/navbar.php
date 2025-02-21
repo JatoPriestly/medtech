@@ -38,7 +38,7 @@ $current_page = basename($_SERVER['REQUEST_URI'], ".php");
                         <li><a class="dropdown-item" href="events.php">Events</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link <?php echo strpos($current_page, 'contact-us') !== false ? 'active' : ''; ?>" href="contact-us.php">Get in Touch</a></li>
+                <li class="nav-item"><a class="nav-link <?php echo strpos($current_page, 'contact-us') !== false ? 'active' : ''; ?>" href="contacts.php">Get in Touch</a></li>
                 <?php if (isset($_SESSION['admin_id'])): ?>
                     <li class="nav-item"><a class="nav-link" href="admin">Admin</a></li>
                 <?php else: ?>
