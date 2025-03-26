@@ -1,6 +1,6 @@
 <?php
 // Import database connection
-include $_SERVER['DOCUMENT_ROOT'].'config/db.php';
+include 'config/db.php';
 
 // Ensuring if $pdo is correctly initialized
 if (!isset($pdo)) {
@@ -74,16 +74,11 @@ $blogs = $stmt->fetchAll(PDO::FETCH_ASSOC); // Fetch 3 most recent blog posts
             </div>
     <!-- TO DO--><!-- This will include the blog_files/blocard_template.php to display the contain using the template from the said file -->
      <!-- Check this and correct by editing code from blog_card_template.php file -->
-        <div class="container mt-5">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mx-auto" style="max-width: 900px;">
+       
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" style="max-width: 900px;">
                 <!-- // Check if there are blog posts -->
                 <?php if (count($blogs) > 0): ?>
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-                        <?php foreach ($blogs as $blog): ?>
-                            <!-- Include blog card template -->
-                            <?php include 'blog_card_template.php'; ?>
-                        <?php endforeach; ?>
-                    </div>
+                    <?php include 'blog_card_template.php'; ?>
                 <?php else: ?>
                     <p>No blog posts available.</p>
                 <?php endif; ?>

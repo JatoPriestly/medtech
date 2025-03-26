@@ -1,6 +1,6 @@
 <?php
 // Import database connection
-include $_SERVER['DOCUMENT_ROOT'].'config/db.php';
+include 'config/db.php';
 
 // Ensuring if $pdo is correctly initialized
 if (!isset($pdo)) {
@@ -14,11 +14,12 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $id = (int) $_GET['id']; // Cast to interger to avoid SQL injection
 
-// Fetch blog data based on ID, fix this code
-$query = "SELECT id, img_url, title,slug, subtitle1, subtitle2,text1,text2,reference,description, updated FROM blog WHERE id= :id";
+// Fetch blog data based on ID
+$query = "SELECT id, img_url, title, slug, subtitle1, subtitle2, text1, text2, reference, description, updated FROM blog WHERE id= :id";
 $stmt = $pdo->prepare($query);
+$stmt->bindParam(':id', $id);
 $stmt->execute();
-$blog = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$blog = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Fetching orther blog contents
 // Fetch blog data
@@ -102,7 +103,7 @@ $blogs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item"><a href="#">Blog</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">The Impact of MDCG 2024-10 on Internal Processes, Timelines, and Team Readiness</li>
+                            <li class="breadcrumb-item active" aria-current="page"><?php echo htmlspecialchars($blog['title']) ?></li>
                         </ol>
                     </nav>
     

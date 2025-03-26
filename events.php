@@ -1,4 +1,52 @@
+<?php
+session_start();
+if (!isset($_SESSION['admin_id'])) {
+    header('Location: login.php');
+    exit;
+}
+include '../config/db.php';
+
+// Fetch events
+$stmt = $pdo->query("SELECT * FROM events");
+$events = $stmt->fetchAll();
+?>
+
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <title>Manage Events</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Manage Events</h1>
+    <a href="add_event.php" class="btn btn-success mb-3">Add Event</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($events as $event): ?>
+                <tr>
+                    <td><?php echo $event['id']; ?></td>
+                    <td><?php echo $event['title']; ?></td>
+                    <td>
+                        <a href="edit_event.php?id=<?php echo $event['id']; ?>" class="btn btn-warning">Edit</a>
+                        <a href="delete_event.php?id=<?php echo $event['id']; ?>" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+</body>
+</html><!DOCTYPE html>
 <html lang="en">
 
 <head>
